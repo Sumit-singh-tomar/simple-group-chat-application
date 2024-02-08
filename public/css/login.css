@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: 10%;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+div{
+    height: 3rem;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+}
+
+form{
+    margin-top: 2rem;
+    margin-left:1rem;
+}
+
+input{
+    width: 15rem;
+}
+
+button{
+    background-color: red;
+    color: black;
+    width: 5rem;
+}

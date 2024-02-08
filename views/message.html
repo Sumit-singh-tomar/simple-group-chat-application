@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Page</title>
+    <link rel="stylesheet" href="/css/message.css">
+</head>
+
+<body>
+    <div>
+        <a href="/user/login">Login</a>
+        <a href="/contact/contactus">Contact us</a>
+
+    </div>
+    <form action="/msg/message" method="POST" onsubmit="handleSubmit(event)">
+        <input type="text" name="message" placeholder="Enter Message" />
+        <input type="hidden" id="username" name="username" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault()
+            var username = localStorage.getItem("username")
+            document.getElementById('username').value = username
+            event.target.submit()
+        }
+    </script>
+</body>
+
+</html>
