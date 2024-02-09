@@ -21,8 +21,8 @@
     <script>
         function handleSubmit(event) {
             event.preventDefault()
-            var username = localStorage.getItem("username")
-            document.getElementById('username').value = username
+            let username = document.getElementById('username').value
+            localStorage.setItem("username", username)
             event.target.submit()
         }
     </script>

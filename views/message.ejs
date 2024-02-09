@@ -15,7 +15,9 @@
     </div>
 
     <span>
-        <%= data %>
+        <% data.map((item)=>{ %>
+            <span style="font-size: large;"><%= item %></span> <br>
+        <% }) %>
     </span>
     <form action="/msg/message" method="POST" onsubmit="handleSubmit(event)">
         <input type="text" name="message" placeholder="Enter Message" />

@@ -1,36 +1,35 @@
 const path = require('path')
 const fs = require('fs')
+const productClass = require('../models/product')
 
 exports.getLogin = (req, res) => {
     res.sendFile(path.join(__dirname, "../", "views", "login.html"))
 }
 
 exports.postMessage = (req, res) => {
-    fs.readFile("username.txt", (err, data) => {
-        if (err) {
-            console.log(err)
-            res.render('message', { data: data })
-        }
-        else {
-            res.render('message', { data: data })
-        }
+    productClass.fetchAll((data) => {
+        let d = data.map((item)=>{
+            console.log(Object.keys(item).shift(),Object.values(item).shift())
+            item = `${Object.keys(item).shift()} : ${Object.values(item).shift()}`
+            return item
+        })
+        res.render('message', { data: d })
     })
 }
 
 exports.getMessage = (req, res) => {
-    fs.readFile("username.txt", (err, data) => {
-        if (err) {
-            console.log(err)
-            res.render('message', { data: data })
-        }
-        else {
-            res.render('message', { data: data })
-        }
+    productClass.fetchAll((data) => {
+        let d = data.map((item)=>{
+            console.log(Object.keys(item).shift(),Object.values(item).shift())
+            item = `${Object.keys(item).shift()} : ${Object.values(item).shift()}`
+            return item
+        })
+        res.render('message', { data: d })
     })
 }
 
 exports.saveMessage = (req, res) => {
-    fs.appendFile("username.txt", `${req.body.username}: ${req.body.message}  `, (e) => {
-        res.redirect('/msg/')
-    })
+    const msg = new productClass(req.body.username, req.body.message)
+    msg.save()
+    res.redirect('/msg/')
 }
